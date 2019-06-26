@@ -6,6 +6,7 @@ import cn.lyc.demo.mapper.PointItemMapper;
 import cn.lyc.demo.service.PointItemService;
 import cn.lyc.demo.until.JsonToList;
 import cn.lyc.demo.until.MyJsonUtil;
+import com.alibaba.druid.support.spring.stat.SpringStatUtils;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jdk.nashorn.internal.runtime.JSONFunctions;
@@ -57,6 +58,7 @@ public class PointController {
     @PostMapping("/insertPointItem")
     @ResponseBody
     public List insertClickInfo(@RequestBody String pointItemList){
+        System.out.println("ok");
         JSONArray jsonArray=JSONArray.fromObject(pointItemList);
         List<PointItem> plist=JSONArray.toList(jsonArray,new PointItem(),new JsonConfig());
         pointItemMapper.insertPointItem(plist);
